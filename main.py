@@ -1,6 +1,7 @@
 
 import pandas as pd
 import numpy as nmp
+import matplotlib.pyplot as plt
 
 learning_rate = 0.8
 tolerance = 0.0001
@@ -48,7 +49,9 @@ class LinearRegression:
             curTolerance = prevLoss - loss
 
             print("Iteration №" + str(iteration))
+            print("Loss function value: " + str(loss))
             print("curTolerance: " + str(curTolerance))
+            print("Weights: " + str(w))
 
             prevLoss = loss
             iteration += 1
@@ -77,6 +80,8 @@ if __name__ == '__main__':
     print("\n")
     X_training = (training_df['x']).to_numpy()
     Y_training = (training_df['y']).to_numpy()
+    plt.scatter(X_training.tolist(), Y_training.tolist())
+    plt.show()
     X_training = nmp.reshape(X_training, (1, X_training.shape[0]))
     Y_training = nmp.reshape(Y_training, (1, Y_training.shape[0]))
 
@@ -94,6 +99,8 @@ if __name__ == '__main__':
     print("\n")
     print("Results on testing set: ")
     print(Y_result)
+    plt.scatter(X_testing.tolist(), Y_testing.tolist())
+    plt.show()
 
     print("The quality of regression is " + str(linearRegression.estimateRegressionQuality(Y_result, Y_testing)))
 
