@@ -81,6 +81,9 @@ if __name__ == '__main__':
     X_training = (training_df['x']).to_numpy()
     Y_training = (training_df['y']).to_numpy()
     plt.scatter(X_training.tolist(), Y_training.tolist())
+    plt.title("Training set")
+    plt.xlabel("X")
+    plt.ylabel("Y")
     plt.show()
     X_training = nmp.reshape(X_training, (1, X_training.shape[0]))
     Y_training = nmp.reshape(Y_training, (1, Y_training.shape[0]))
@@ -99,7 +102,17 @@ if __name__ == '__main__':
     print("\n")
     print("Results on testing set: ")
     print(Y_result)
+
+    plt.scatter(X_testing.tolist(), Y_result.tolist())
+    plt.title("Result set(based on regression line)")
+    plt.xlabel("X")
+    plt.ylabel("Y")
+    plt.show()
+
     plt.scatter(X_testing.tolist(), Y_testing.tolist())
+    plt.title("Testing set")
+    plt.xlabel("X")
+    plt.ylabel("Y")
     plt.show()
 
     print("The quality of regression is " + str(linearRegression.estimateRegressionQuality(Y_result, Y_testing)))
